@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using WeatherApp.Model;
 
 namespace WeatherApp.ViewModel
 {
@@ -19,6 +20,34 @@ namespace WeatherApp.ViewModel
                 OnPropertyChanged("Query");
             }
         }
+
+        //Prop for weather conditions
+        private CurrentConditions currentConditions;
+
+        public CurrentConditions CurrentConditions
+        {
+            get => currentConditions;
+            set
+            {
+                currentConditions = value;
+                OnPropertyChanged("CurrentCondition");
+            }
+        }
+
+        //Prop for cities
+        private City selectedCity;
+
+        public City SelectedCity
+        {
+            get => selectedCity;
+            set
+            {
+                selectedCity = value;
+                OnPropertyChanged("SelectedCity");
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

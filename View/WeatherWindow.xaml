@@ -4,16 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp.View"
+        xmlns:vm="clr-namespace:WeatherApp.ViewModel"
         mc:Ignorable="d"
         Title="The Weather App" Height="600" Width="400">
-    <Grid>
+    <!--Instance of weatherVM for data context-->
+    <Window.Resources>
+        <vm:WeatherVM x:Key="vm"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource vm}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Margin="25">
             <TextBlock Text="Please enter a city: " FontWeight="Bold"/>
-            <TextBox />
+            <!--Two way binding-->
+            <TextBox Text="{Binding Query, Mode=TwoWay}" />
             <Button Margin="0, 10"
                     Content="Search" />
             <ListView>
@@ -29,26 +35,26 @@
 
         <Grid Grid.Row="1"
               Background="SkyBlue"
-              Margin="5">
+              Margin="5"
+              DataContext="{Binding CurrentConditions}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <StackPanel>
-                <TextBlock VerticalAlignment="Center"
-                           Text="Berlin"
+                <TextBlock DataContext="{StaticResource vm}" 
+                           Text="{Binding SelectedCity.LocalizedName}"
                            Foreground="Black"
                            FontSize="20"
                            Margin="20,0"/>
-                <TextBlock VerticalAlignment="Center"
-                           Text="Snow"
+                <TextBlock Text="{Binding WeatherText}"
                            Foreground="Black"
                            FontSize="18"
                            Margin="20,0"/>
             </StackPanel>
             <TextBlock Grid.Column="1"
                            VerticalAlignment="Center"
-                           Text="11 C"
+                           Text="{Binding Temperature.Metric.Value, StringFormat={}{0}°C}"
                            Foreground="Black"
                            FontSize="30"
                            Margin="20,0"/>
