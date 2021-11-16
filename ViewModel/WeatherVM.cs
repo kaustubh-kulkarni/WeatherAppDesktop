@@ -47,6 +47,29 @@ namespace WeatherApp.ViewModel
             }
         }
 
+        //Ctor
+        public WeatherVM()
+        {
+            if(DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
+                selectedCity = new City
+                {
+                    LocalizedName = "Frankfurt"
+                };
+                currentConditions = new CurrentConditions
+                {
+                    WeatherText = "Snow",
+                    Temperature = new Temperature
+                    {
+                        Metric = new Units
+                        {
+                            Value = 21
+                        }
+                    }
+                };
+            }
+            
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
