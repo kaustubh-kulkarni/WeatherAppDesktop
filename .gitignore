@@ -1,0 +1,86 @@
+
+# Funnel settings
+*.vsext
+*.vsext.user
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Arbitrary test Results
+[Tt]est[Rr]esult*.log
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+.vs
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NCrunch
+*.ncrunch*
+_NCrunch_*
+.*crunch*.local.xml
+
+# NDepend
+NDependOut/
+
+# Backup & report files from converting an old project file to a newer
+# Visual Studio version. Backup files are not needed, because we have git ;-)
+_UpgradeReport_Files/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Test playlist
+*.playlist
+
+# *.dll
+*.pdb
+*.suo
+*.cache
+*.*proj.user
+*.vsmdi
+*.orig
+bin
+obj
+packages
+Installers/
+Logs/
+
+CodeAnalysis/NDepend/201[0-9]_[0-9][0-9]/
+CodeAnalysis/CoverageData
+
+# Agilent Shared build
+build.*proj
+BUILDINFO.cs
+target/
+lib/
+buildversion.rc
+
+# M2 Git Repositories 
+# Maven Repo
+.repository
+
+*.nupkg
+
+# Eclipse
+.settings
+.project
+
+
+
+
