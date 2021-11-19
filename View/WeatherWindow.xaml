@@ -21,6 +21,7 @@
             <!--Two way binding-->
             <TextBox Text="{Binding Query, Mode=TwoWay}" />
             <Button Margin="0, 10"
+                    Command="{Binding SearchCommand}"
                     Content="Search" />
             <ListView>
                 <ListView.ItemTemplate>

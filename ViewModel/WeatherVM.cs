@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Commands;
 using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
@@ -48,9 +49,13 @@ namespace WeatherApp.ViewModel
             }
         }
 
+        //Prop for executing the ICommand interface
+        public SearchCommand SearchCommand { get; set; }
+
         //Ctor
         public WeatherVM()
         {
+            //When application is not running
             if(DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
             {
                 selectedCity = new City
@@ -69,6 +74,9 @@ namespace WeatherApp.ViewModel
                     }
                 };
             }
+
+            //When application is running, initialize the search command
+            SearchCommand = new SearchCommand(this);
             
         }
 
