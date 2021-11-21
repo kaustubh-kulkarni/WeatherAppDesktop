@@ -65,6 +65,7 @@ namespace WeatherApp.ViewModel
                 currentConditions = new CurrentConditions
                 {
                     WeatherText = "Snow",
+                    LocalObservationDateTime = DateTime.UtcNow,
                     Temperature = new Temperature
                     {
                         Metric = new Units

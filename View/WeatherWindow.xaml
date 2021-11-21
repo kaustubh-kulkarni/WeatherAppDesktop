@@ -52,6 +52,10 @@
                            Foreground="Black"
                            FontSize="18"
                            Margin="20,0"/>
+                <TextBlock Text="{Binding LocalObservationDateTime}"
+                           Foreground="Black"
+                           FontSize="18"
+                           Margin="20,0"/>
             </StackPanel>
             <TextBlock Grid.Column="1"
                            VerticalAlignment="Center"
