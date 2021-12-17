@@ -36,7 +36,7 @@ namespace WeatherApp.ViewModel
             set
             {
                 currentConditions = value;
-                OnPropertyChanged("CurrentCondition");
+                OnPropertyChanged("CurrentConditions");
             }
         }
 
@@ -49,7 +49,12 @@ namespace WeatherApp.ViewModel
             set
             {
                 selectedCity = value;
-                OnPropertyChanged("SelectedCity");
+                if(selectedCity != null)
+                {
+                    OnPropertyChanged("SelectedCity");
+                    GetCurrentConditions();
+                }
+                
             }
         }
 
@@ -69,12 +74,11 @@ namespace WeatherApp.ViewModel
                 currentConditions = new CurrentConditions
                 {
                     WeatherText = "Snow",
-                    LocalObservationDateTime = DateTime.UtcNow,
                     Temperature = new Temperature
                     {
                         Metric = new Units
                         {
-                            Value = 21
+                            Value = "21"
                         }
                     }
                 };
@@ -84,6 +88,18 @@ namespace WeatherApp.ViewModel
             SearchCommand = new SearchCommand(this);
             Cities = new ObservableCollection<City>();
             
+        }
+
+        //Method to actually retrieve the current conditions when city changes
+        //It will be called after the prop change on setter
+        public async void GetCurrentConditions()
+        {
+            //Making the query empty as user already has the city
+            Query = string.Empty;
+            //Get the current conditions for new city in this prop we declared above
+            CurrentConditions = await AccuWeatherHelper.GetCurrentConditions(SelectedCity.Key);
+            //Clearing the city as the user now will try to fetch other city
+            Cities.Clear();
         }
 
         public async void MakeQuery()
